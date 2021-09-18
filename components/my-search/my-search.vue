@@ -5,16 +5,19 @@
 	3.placeholder 内容可以在父组件定义
 	-->
 	<view class="my-search-container">
-		<uni-search-bar>
-			
-		</uni-search-bar>
+	
 		<!-- 搜索按钮 -->
 		<view class="my-search-box">
 			<!-- 搜索图标 -->
 			<image class="icon" src="@/static/images/search.png"
 			/>
 			<!-- placeholder -->
-			<text class="placeholder">placeholder</text>
+			<text 
+			class="placeholder"
+			:style="{
+				color: config.textColor
+			}"
+			>placeholder</text>
 		</view>
 	</view>
 </template>
@@ -22,6 +25,12 @@
 <script>
 	export default {
 		name:"my-search",
+		props: {
+			placeholderText:{
+				type: String,
+				default:'搜索'
+			}
+		},
 		data() {
 			return {
 				
@@ -36,9 +45,9 @@
 	align-items: center;
 	.my-search-box {
 		height: 36px;
-		background-color:$uni-bg-color;
+		background-color:#ffffff;
 		border-radius: 15px;
-		border:1px solid $uni-bg-color-border;
+		border:1px solid #c9c9c9;
 		width: 100%;
 		display: flex;
 		align-item: center;
@@ -51,7 +60,7 @@
 		.placeholder {
 			font-size: $uni-font-size-sm;
 			margin-left: $uni-spacing-row-sm;
-			color: $uni-text-color-placeholder;
+			color: #454545;
 		}
 	}
 }
