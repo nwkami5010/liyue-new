@@ -17,18 +17,21 @@
 							 @click="onTabClick(index)"
 							 :style="{
 							           color:
-							           activeIndex === index ? defaultConfig.activeTextColor : defaultConfig.textColor
+							           activeIndex === index ? defaultConfig.activeTextColor 
+									   : defaultConfig.textColor
 							                 }"
 							>{{item.label || item}}
 							</view>
 						</block>
 					</view>
 					 <!-- 滑块 -->
-					<view class="underLine" 
-					:style="{transform: 'translateX('+ slider.left + 'px)',
-							width: defaultConfig.underLineWidth +'px',
-							height: defaultConfig.underLineHeight+'px',
-							backgroundColor: defaultConfig.underLineColor
+					<view
+					 class="underLine" 
+					:style="{
+						transform: 'translateX('+ slider.left + 'px)',
+				        width: defaultConfig.underLineWidth +'px',
+						height: defaultConfig.underLineHeight+'px',
+						backgroundColor: defaultConfig.underLineColor
 					}"></view>
 				</view>
 			</scroll-view>
@@ -75,8 +78,14 @@
 					//滑块离左侧的具力
 					left:0
 				},
+				//scrollView的横向滚动条位置
+				scrollLeft: 0,
 				//默认配置
 				defaultConfig: {
+					 // 默认的字体颜色
+					textColor: '#333333',
+					// 高亮字体颜色
+					activeTextColor: '#f94d2a',
 					//下划线的宽度,高度
 					underLineWidth: 24,
 					underLineHeight: 2,
@@ -133,9 +142,15 @@
 				const index = this.activeIndex;
 				//滑块的滚动 === this.slider.left
 				this.slider = {
+					// TODO：left 如何定义呢？
+					// 1. 维护一个单独的数据对象 `tabList`
+					// 2. 在 `tabList`  的 `item` 中为一个 `_slider` 属性
+					// 3. 该属性保存了 【当前 `item` 下 的滑块位置】
 					//left = tabItem.left + (tabItem.width-slider.width) /2
 					left:this.tabList[index]._slider.left
-				}
+				};
+				//控制scrollView 进行横向的滚动
+				this.scrollLeft = this.activeIndex * this.defaultConfig.underLineWidth;
 			}
 		},
 		watch: {
@@ -160,6 +175,13 @@
 						//计算item的slider
 						this.updateTabWidth();
 					},0)
+				},
+				immediate: true
+			},
+			//监听config
+			config: {
+				handler(val) {
+					this.defaultConfig = { ...this.defaultConfig,...val};
 				},
 				immediate: true
 			}
