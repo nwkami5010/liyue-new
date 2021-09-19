@@ -22,7 +22,12 @@
 		},
 		methods:{
 		async loadHotTabs(){
-				getHotTabs()
+				 // uniapp 支持 async await
+		     const { data: res } = await getHotTabs();
+			 console.log(res)
+				      this.tabData = res.list;
+				      // // 获取列表数据
+				      // this.getHotListFromTab();
 			}
 		}
 	}
