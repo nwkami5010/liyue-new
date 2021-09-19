@@ -8,12 +8,22 @@
 </template>
 
 <script>
+	import { getHotTabs } from 'api/hot';
 	export default {
 		name:'my-search',
 		data() {
 			return {
-				
+
 			};
+		},
+		// created，组件实现配置完成，但是dom没完成，进行网络请求，配置响应式数据
+		created (){
+			this.loadHotTabs();
+		},
+		methods:{
+		async loadHotTabs(){
+				getHotTabs()
+			}
 		}
 	}
 </script>
