@@ -6,7 +6,7 @@
 		<view class="search-box">
 			<my-search placeholderText="uni-app 自定义组件"></my-search>
 		</view>
-		<my-tabs :tabData="tabData"></my-tabs>
+		<my-tabs :tabData="tabData" :defaultIndex="0"></my-tabs>
 	</view>
 </template>
 

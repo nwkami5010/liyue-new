@@ -10,7 +10,10 @@
 				<view class="scroll-content">
 					<view class="tab-item-box">
 						<block v-for="(item,index) in tabData" :key="index" >
-							<view class="tab-item">{{item.label || item}}
+							<view class="tab-item"
+							 :class="{'tab-item-active':activeIndex === index}"
+							 @click="onTabClick(index)"
+							>{{item.label || item}}
 							</view>
 						</block>
 					</view>
@@ -47,7 +50,27 @@
 		data() {
 			return {
 				tabList: [],
+				
+				//当前激活项的index
+				activeIndex: -1,
 			};
+		},
+		methods:{
+			onTabClick(index){
+				this.activeIndex = index;
+				this.$emit('tabClick',index)
+			}
+		},
+		watch: {
+			//监听激活项目的变化
+			defaultIndex:{
+				//当defaultIndex发生变化时候，回调的方法
+				handler(val){
+					this.activeIndex = val;
+				},
+				//当前handler回调将会在侦听开始猴立即被调用
+				immediate:true
+			}
 		}
 	}
 </script>
