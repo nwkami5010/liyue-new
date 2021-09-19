@@ -104,6 +104,9 @@ try {
   components = {
     mySearch: function() {
       return __webpack_require__.e(/*! import() | components/my-search/my-search */ "components/my-search/my-search").then(__webpack_require__.bind(null, /*! @/components/my-search/my-search.vue */ 36))
+    },
+    myTabs: function() {
+      return __webpack_require__.e(/*! import() | components/my-tabs/my-tabs */ "components/my-tabs/my-tabs").then(__webpack_require__.bind(null, /*! @/components/my-tabs/my-tabs.vue */ 43))
     }
   }
 } catch (e) {
@@ -168,12 +171,16 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
 var _hot = __webpack_require__(/*! api/hot */ 20);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 {
   name: 'my-search',
   data: function data() {
-    return {};
-
+    return {
+      //tab数据源
+      tabData: [] };
 
   },
   // created，组件实现配置完成，但是dom没完成，进行网络请求，配置响应式数据
@@ -183,7 +190,7 @@ var _hot = __webpack_require__(/*! api/hot */ 20);function _interopRequireDefaul
   methods: {
     loadHotTabs: function loadHotTabs() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _yield$getHotTabs, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
 
-                  (0, _hot.getHotTabs)());case 2:_yield$getHotTabs = _context.sent;res = _yield$getHotTabs.data;
+                  (0, _hot.getHotTabs)());case 2:_yield$getHotTabs = _context.sent;res = _yield$getHotTabs.data; //data解构出来赋值给res
                 console.log(res);
                 _this.tabData = res.list;
                 // // 获取列表数据

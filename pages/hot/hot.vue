@@ -3,7 +3,10 @@
 		<!-- 小程序的image组件  -->
 		<image class="logo" src="@/static/images/logo.png" mode="aspectFit" />
 		<!-- 可直接使用组件，无需注册 -->
-		<my-search></my-search>
+		<view class="search-box">
+			<my-search placeholderText="uni-app 自定义组件"></my-search>
+		</view>
+		<my-tabs :tabData="tabData"></my-tabs>
 	</view>
 </template>
 
@@ -13,7 +16,8 @@
 		name:'my-search',
 		data() {
 			return {
-
+				//tab数据源
+				tabData:[]
 			};
 		},
 		// created，组件实现配置完成，但是dom没完成，进行网络请求，配置响应式数据
@@ -23,9 +27,9 @@
 		methods:{
 		async loadHotTabs(){
 				 // uniapp 支持 async await
-		     const { data: res } = await getHotTabs();
+		     const { data: res } = await getHotTabs();//data解构出来赋值给res
 			 console.log(res)
-				      this.tabData = res.list;
+			 this.tabData = res.list;
 				      // // 获取列表数据
 				      // this.getHotListFromTab();
 			}

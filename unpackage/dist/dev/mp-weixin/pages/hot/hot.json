@@ -2,6 +2,7 @@
   "navigationBarTitleText": "热搜",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "my-search": "/components/my-search/my-search"
+    "my-search": "/components/my-search/my-search",
+    "my-tabs": "/components/my-tabs/my-tabs"
   }
 }
