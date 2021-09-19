@@ -5,14 +5,14 @@
 	3.placeholder 内容可以在父组件定义
 	-->
 	<view class="my-search-container">
-	
+
 		<!-- 搜索按钮 -->
 		<view class="my-search-box">
 			<!-- 搜索图标 -->
 			<image class="icon" src="@/static/images/search.png"
 			/>
 			<!-- placeholder -->
-			<text 
+			<text
 			class="placeholder"
 			:style="{
 				color: config.textColor
@@ -33,7 +33,7 @@
 		},
 		data() {
 			return {
-				
+
 			};
 		}
 	}
@@ -50,9 +50,9 @@
 		border:1px solid #c9c9c9;
 		width: 100%;
 		display: flex;
-		align-item: center;
+		align-items: center;
 		padding: 0 $uni-spacing-row-base;
-		
+
 		.icon {
 			width:$uni-img-size-sm;
 			height:$uni-img-size-sm;
