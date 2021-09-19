@@ -17,6 +17,8 @@
 							</view>
 						</block>
 					</view>
+					<view class="underLine" 
+					:style="{transform: 'translateX('+ slider.left + 'px)'}"></view>
 				</view>
 			</scroll-view>
 			
@@ -53,12 +55,16 @@
 				
 				//当前激活项的index
 				activeIndex: -1,
+				//滑块
+				slider:{
+					//滑块距离左侧的
+				}
 			};
 		},
 		methods:{
 			onTabClick(index){
 				this.activeIndex = index;
-				this.$emit('tabClick',index)
+				this.$emit('tabClick');
 			}
 		},
 		watch: {
