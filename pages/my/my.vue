@@ -1,4 +1,5 @@
 <template>
+
 	<view>
 		
 	</view>
@@ -6,6 +7,7 @@
 
 <script>
 	export default {
+		
 		data() {
 			return {
 				
